@@ -17,10 +17,10 @@ class PureVistaApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      initialRoute: screens.MainTabScreen.route,
+      initialRoute: screens.HomeScreen.route,
       routes: {
-        // screens.HomeScreen.route: (context) => const screens.HomeScreen(),
-        screens.MainTabScreen.route: (context) => const screens.MainTabScreen(),
+        screens.HomeScreen.route: (context) => const screens.HomeScreen(),
+        screens.MainTabScreen.route: (context) => screens.MainTabScreen(selectedIndex: 0),
       },
     );
   }
