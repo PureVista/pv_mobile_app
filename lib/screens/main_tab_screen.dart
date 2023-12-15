@@ -3,8 +3,8 @@ import "./screens.dart" as screens;
 
 class MainTabScreen extends StatefulWidget {
   static String route = "/main_tab";
-  int selectedIndex;
-  MainTabScreen({super.key, required this.selectedIndex});
+  final int selectedIndex;
+  const MainTabScreen({super.key, required this.selectedIndex});
 
   @override
   State<MainTabScreen> createState() => _MainTabScreenState();
@@ -12,9 +12,11 @@ class MainTabScreen extends StatefulWidget {
 
 class _MainTabScreenState extends State<MainTabScreen> {
   final List<Widget> _screens = const [
+    screens.HomeScreen(),
     screens.CosmeticScreen(),
     screens.PhotoScreen(),
     screens.FoodScreen(),
+    screens.RecommendedScreen(),
   ];
   late int selectedIndex;
 
@@ -43,13 +45,13 @@ class _MainTabScreenState extends State<MainTabScreen> {
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
-      currentIndex: selectedIndex,
+      currentIndex: selectedIndex ,
       onTap: (int value) {
         setState(() {
           selectedIndex = value;
         });
       },
-      iconSize: 26,
+      iconSize: 32,
       unselectedItemColor: Colors.grey,
       selectedItemColor: Colors.green,
       showUnselectedLabels: true,
@@ -59,6 +61,8 @@ class _MainTabScreenState extends State<MainTabScreen> {
           const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
       items: const [
         BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined), label: "Home"),
+        BottomNavigationBarItem(
             icon: Icon(Icons.shopping_basket_outlined), label: "Cosmetic"),
         BottomNavigationBarItem(
           icon: Icon(Icons.camera_alt_outlined, size: 50),
@@ -66,6 +70,8 @@ class _MainTabScreenState extends State<MainTabScreen> {
         ),
         BottomNavigationBarItem(
             icon: Icon(Icons.fastfood_outlined), label: "Food"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.recommend_outlined), label: "Recommended"),
       ],
     );
   }

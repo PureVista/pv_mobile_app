@@ -19,8 +19,7 @@ class PureVistaApp extends StatelessWidget {
       ),
       initialRoute: screens.HomeScreen.route,
       routes: {
-        screens.HomeScreen.route: (context) => const screens.HomeScreen(),
-        screens.MainTabScreen.route: (context) => screens.MainTabScreen(selectedIndex: 0),
+        screens.MainTabScreen.route: (context) => const screens.MainTabScreen(selectedIndex: 0),
       },
     );
   }

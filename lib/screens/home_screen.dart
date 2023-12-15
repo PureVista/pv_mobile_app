@@ -8,24 +8,25 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: TextFormField(
-            decoration: const InputDecoration(
-                hintText: "Search Product",
-                prefixIcon: Icon(Icons.search_outlined)),
-          ),
-        ),
-        body: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 54),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 18,
-                ),
-                Center(
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 54),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 18,
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const MainTabScreen(selectedIndex: 1)));
+                  },
                   child: Container(
                     width: 350,
                     height: 150,
@@ -52,49 +53,57 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 18,
-                ),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  MainTabScreen(selectedIndex: 2)));
-                    },
-                    child: Container(
-                      width: 350,
-                      height: 150,
-                      decoration: const BoxDecoration(
-                          color: Colors.redAccent,
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                              width: 105,
-                              child: Image.asset("assets/food.png")),
-                          Container(
-                            margin: const EdgeInsets.only(right: 50),
-                            child: const Text(
-                              "Food",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 26),
-                            ),
-                          )
-                        ],
-                      ),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const MainTabScreen(selectedIndex: 3)));
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                        color: Colors.redAccent,
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                            width: 105, child: Image.asset("assets/food.png")),
+                        Container(
+                          margin: const EdgeInsets.only(right: 50),
+                          child: const Text(
+                            "Food",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 26),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 18,
-                ),
-                Center(
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const MainTabScreen(selectedIndex: 4)));
+                  },
                   child: Container(
                     width: 400,
                     height: 150,
@@ -121,18 +130,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        bottomNavigationBar: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.camera_enhance_outlined,
-              size: 76,
-            ),
-          ],
-        ));
+      ),
+    );
   }
 }
