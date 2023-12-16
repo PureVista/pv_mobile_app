@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pure_vista/screens/main_tab_screen.dart';
+import "screens.dart" as screens;
+import "../widgets/widgets.dart" as widgets;
 
 class HomeScreen extends StatelessWidget {
   static String route = "/home";
@@ -18,42 +19,21 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 18,
               ),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const MainTabScreen(selectedIndex: 1)));
-                  },
-                  child: Container(
-                    width: 350,
-                    height: 150,
-                    decoration: const BoxDecoration(
-                        color: Colors.redAccent,
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                            width: 120,
-                            child: Image.asset("assets/makeup.png")),
-                        Container(
-                          margin: const EdgeInsets.only(right: 40),
-                          child: const Text(
-                            "Cosmetic",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 26),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+              const widgets.Card(
+                  toRoute: screens.MainTabScreen(selectedIndex: 1),
+                  text: "Cosmetic",
+                  url: "assets/makeup.png",
+                  imageWidth: 120,
+                  rightMargin: 40),
+              const SizedBox(
+                height: 18,
               ),
+              const widgets.Card(
+                  toRoute: screens.MainTabScreen(selectedIndex: 3),
+                  text: "Food",
+                  url: "assets/food.png",
+                  imageWidth: 105,
+                  rightMargin: 50),
               const SizedBox(
                 height: 18,
               ),
@@ -64,45 +44,7 @@ class HomeScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const MainTabScreen(selectedIndex: 3)));
-                  },
-                  child: Container(
-                    width: 350,
-                    height: 150,
-                    decoration: const BoxDecoration(
-                        color: Colors.redAccent,
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                            width: 105, child: Image.asset("assets/food.png")),
-                        Container(
-                          margin: const EdgeInsets.only(right: 50),
-                          child: const Text(
-                            "Food",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 26),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const MainTabScreen(selectedIndex: 4)));
+                                const screens.MainTabScreen(selectedIndex: 4)));
                   },
                   child: Container(
                     width: 400,
@@ -116,16 +58,6 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                             width: 200,
                             child: Image.asset("assets/recommended.png")),
-                        // Container(
-                        //   margin: const EdgeInsets.only(right: 15),
-                        //   child: const Text(
-                        //     "Recommendeds",
-                        //     style: TextStyle(
-                        //         color: Colors.white,
-                        //         fontWeight: FontWeight.bold,
-                        //         fontSize: 18),
-                        //   ),
-                        // )
                       ],
                     ),
                   ),

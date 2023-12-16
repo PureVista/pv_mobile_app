@@ -17,7 +17,7 @@ class PureVistaApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      initialRoute: screens.HomeScreen.route,
+      initialRoute: screens.MainTabScreen.route,
       routes: {
         screens.MainTabScreen.route: (context) => const screens.MainTabScreen(selectedIndex: 0),
       },
