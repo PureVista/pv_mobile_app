@@ -27,6 +27,7 @@ class Card extends StatelessWidget {
               context, MaterialPageRoute(builder: (context) => toRoute));
         },
         child: Container(
+          margin: const EdgeInsets.only(top: 18),
           width: 350,
           height: 150,
           decoration: const BoxDecoration(
@@ -39,6 +40,7 @@ class Card extends StatelessWidget {
             rightMargin: rightMargin,
             color: color,
             topPadding: 0,
+            fontSize: 26,
           ),
         ),
       ),

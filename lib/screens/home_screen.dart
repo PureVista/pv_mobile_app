@@ -16,9 +16,6 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 18,
-              ),
               const widgets.Card(
                 toRoute: screens.MainTabScreen(selectedIndex: 1),
                 text: "Cosmetic",
@@ -26,9 +23,6 @@ class HomeScreen extends StatelessWidget {
                 imageWidth: 120,
                 rightMargin: 40,
                 color: Colors.white,
-              ),
-              const SizedBox(
-                height: 18,
               ),
               const widgets.Card(
                 toRoute: screens.MainTabScreen(selectedIndex: 3),

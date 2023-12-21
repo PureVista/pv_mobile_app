@@ -7,6 +7,7 @@ class HeadWithImage extends StatelessWidget {
   final double rightMargin;
   final Color color;
   final double topPadding;
+  final double fontSize;
 
   const HeadWithImage({
     super.key,
@@ -16,6 +17,7 @@ class HeadWithImage extends StatelessWidget {
     required this.rightMargin,
     required this.color,
     required this.topPadding,
+    required this.fontSize,
   });
 
   @override
@@ -31,7 +33,7 @@ class HeadWithImage extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                  color: color, fontWeight: FontWeight.bold, fontSize: 26),
+                  color: color, fontWeight: FontWeight.bold, fontSize: fontSize),
             ),
           )
         ],

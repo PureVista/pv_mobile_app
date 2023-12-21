@@ -7,7 +7,7 @@ void main() {
 
 class PureVistaApp extends StatelessWidget {
   const PureVistaApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,10 @@ class PureVistaApp extends StatelessWidget {
       ),
       initialRoute: screens.MainTabScreen.route,
       routes: {
-        screens.MainTabScreen.route: (context) => const screens.MainTabScreen(selectedIndex: 0),
+        screens.MainTabScreen.route: (context) =>
+            const screens.MainTabScreen(selectedIndex: 0),
+        screens.ProductDetailScreen.route: (context) =>
+            const screens.ProductDetailScreen()
       },
     );
   }
