@@ -1,10 +1,10 @@
 class Product {
-  int id;
+  String id;
   String name;
   String brand;
   String description;
   bool isHarmful;
-  int harmfulPercent;
+  int harmfulnessPercentage;
   String productType;
   List<String>? barcodes;
 
@@ -14,7 +14,7 @@ class Product {
       required this.brand,
       required this.description,
       required this.isHarmful,
-      required this.harmfulPercent,
+      required this.harmfulnessPercentage,
       required this.productType,
       this.barcodes});
 }

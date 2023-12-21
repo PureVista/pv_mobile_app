@@ -23,37 +23,30 @@ class _FoodScreenState extends State<FoodScreen> {
       setState(() {
         _fetching = true;
       });
-      var url = Uri.http("localhost:3000", "/api/products");
-      var response = await http.get(url);
+      var uri = Uri.http("10.0.2.2:3000", "/api/products", {"isFood": "true"});
+
+      var response = await http.get(uri);
+
       if (response.statusCode != 200) {
         throw "Service not working!";
       }
       var jsonResponse = convert.jsonDecode(response.body);
 
-      models.Info responseInfo = models.Info(
-        count: jsonResponse["info"]["count"],
-        pages: jsonResponse["info"]["pages"],
-        prev: jsonResponse["info"]["prev"],
-        next: jsonResponse["info"]["next"],
-      );
-
       List<models.Product> responseProducts = [];
 
-      for (var result in jsonResponse["results"] as List) {
+      for (var result in jsonResponse["result"] as List) {
         models.Product resultProduct = models.Product(
             id: result["_id"],
             name: result["name"],
             brand: result["brand"],
             description: result["description"],
             isHarmful: result["isHarmful"],
-            harmfulPercent: result["harmfulPercent"],
+            harmfulnessPercentage: result["harmfulnessPercentage"],
             productType: result["productType"]);
-
         responseProducts.add(resultProduct);
       }
 
       setState(() {
-        _info = responseInfo;
         _products = responseProducts;
       });
     } catch (error) {
@@ -68,10 +61,16 @@ class _FoodScreenState extends State<FoodScreen> {
   }
 
   @override
+  void initState() {
+    getProducts();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(children: [
-        widgets.HeadWithImage(
+        const widgets.HeadWithImage(
           text: "Food",
           url: "assets/food.png",
           imageWidth: 80,
@@ -80,43 +79,34 @@ class _FoodScreenState extends State<FoodScreen> {
           topPadding: 30,
           fontSize: 34,
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Column(
           children: [
-            widgets.Card(
-              toRoute: screens.ProductDetailScreen(),
-              text: "Food",
-              url: "assets/food.png",
-              imageWidth: 80,
-              rightMargin: 40,
-              color: Colors.black,
-            ),
-            widgets.Card(
-              toRoute: screens.ProductDetailScreen(),
-              text: "Food",
-              url: "assets/food.png",
-              imageWidth: 80,
-              rightMargin: 40,
-              color: Colors.black,
-            ),
-            widgets.Card(
-              toRoute: screens.ProductDetailScreen(),
-              text: "Food",
-              url: "assets/food.png",
-              imageWidth: 80,
-              rightMargin: 40,
-              color: Colors.black,
-            ),
-            widgets.Card(
-              toRoute: screens.ProductDetailScreen(),
-              text: "Food",
-              url: "assets/food.png",
-              imageWidth: 80,
-              rightMargin: 40,
-              color: Colors.black,
-            ),
+            if (!_fetching)
+              ..._products
+                  .map((product) => widgets.Card(
+                      toRoute: screens.ProductDetailScreen(),
+                      text: product.name,
+                      url: "assets/food.png",
+                      imageWidth: 80,
+                      rightMargin: 40,
+                      color: Colors.white))
+                  .toList(),
+            if (_errorMessage.isNotEmpty)
+              Container(
+                margin: const EdgeInsets.only(top: 30),
+                child: Text(
+                  _errorMessage,
+                  style: const TextStyle(fontSize: 26, color: Colors.red),
+                ),
+              ),
+            if (_fetching)
+              SizedBox(
+                  height: MediaQuery.of(context).size.height / 2,
+                  width: MediaQuery.of(context).size.width,
+                  child: const Center(child: CircularProgressIndicator())),
           ],
         ),
       ]),
