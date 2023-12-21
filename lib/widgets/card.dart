@@ -7,6 +7,7 @@ class Card extends StatelessWidget {
   final String url;
   final double imageWidth;
   final double rightMargin;
+  final Color color;
 
   const Card(
       {super.key,
@@ -14,7 +15,8 @@ class Card extends StatelessWidget {
       required this.text,
       required this.url,
       required this.imageWidth,
-      required this.rightMargin});
+      required this.rightMargin,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,13 @@ class Card extends StatelessWidget {
               color: Colors.redAccent,
               borderRadius: BorderRadius.all(Radius.circular(30))),
           child: widgets.HeadWithImage(
-              text: text,
-              url: url,
-              imageWidth: imageWidth,
-              rightMargin: rightMargin),
+            text: text,
+            url: url,
+            imageWidth: imageWidth,
+            rightMargin: rightMargin,
+            color: color,
+            topPadding: 0,
+          ),
         ),
       ),
     );
