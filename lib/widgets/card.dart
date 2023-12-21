@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "widgets.dart" as widgets;
 
 class Card extends StatelessWidget {
   final Widget toRoute;
@@ -29,22 +30,11 @@ class Card extends StatelessWidget {
           decoration: const BoxDecoration(
               color: Colors.redAccent,
               borderRadius: BorderRadius.all(Radius.circular(30))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(width: imageWidth, child: Image.asset(url)),
-              Container(
-                margin: EdgeInsets.only(right: rightMargin),
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 26),
-                ),
-              )
-            ],
-          ),
+          child: widgets.HeadWithImage(
+              text: text,
+              url: url,
+              imageWidth: imageWidth,
+              rightMargin: rightMargin),
         ),
       ),
     );
