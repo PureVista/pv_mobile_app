@@ -6,6 +6,7 @@ class Product {
   bool isHarmful;
   int harmfulnessPercentage;
   String productType;
+  List<dynamic> ingredients;
   List<String>? barcodes;
 
   Product(
@@ -16,5 +17,6 @@ class Product {
       required this.isHarmful,
       required this.harmfulnessPercentage,
       required this.productType,
+      required this.ingredients,
       this.barcodes});
 }

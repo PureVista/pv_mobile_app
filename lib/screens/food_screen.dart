@@ -41,6 +41,7 @@ class _FoodScreenState extends State<FoodScreen> {
             brand: result["brand"],
             description: result["description"],
             isHarmful: result["isHarmful"],
+            ingredients: result["ingredients"],
             harmfulnessPercentage: result["harmfulnessPercentage"],
             productType: result["productType"]);
         responseProducts.add(resultProduct);
@@ -82,32 +83,27 @@ class _FoodScreenState extends State<FoodScreen> {
         const SizedBox(
           height: 15,
         ),
-        Column(
-          children: [
-            if (!_fetching)
-              ..._products
-                  .map((product) => widgets.Card(
-                      toRoute: screens.ProductDetailScreen(),
-                      text: product.name,
-                      url: "assets/food.png",
-                      imageWidth: 80,
-                      rightMargin: 40,
-                      color: Colors.white))
-                  .toList(),
-            if (_errorMessage.isNotEmpty)
-              Container(
-                margin: const EdgeInsets.only(top: 30),
-                child: Text(
-                  _errorMessage,
-                  style: const TextStyle(fontSize: 26, color: Colors.red),
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              if (!_fetching)
+                ..._products
+                    .map((product) => widgets.ProductView(product: product)),
+              if (_errorMessage.isNotEmpty)
+                Container(
+                  margin: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    _errorMessage,
+                    style: const TextStyle(fontSize: 26, color: Colors.red),
+                  ),
                 ),
-              ),
-            if (_fetching)
-              SizedBox(
-                  height: MediaQuery.of(context).size.height / 2,
-                  width: MediaQuery.of(context).size.width,
-                  child: const Center(child: CircularProgressIndicator())),
-          ],
+              if (_fetching)
+                SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    width: MediaQuery.of(context).size.width,
+                    child: const Center(child: CircularProgressIndicator())),
+            ],
+          ),
         ),
       ]),
     );
