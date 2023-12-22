@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import "package:pure_vista/models/product_model.dart";
 import "../models/models.dart" as models;
 import "../widgets/widgets.dart" as widgets;
 
