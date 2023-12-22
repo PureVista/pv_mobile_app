@@ -26,10 +26,10 @@ class HomeScreen extends StatelessWidget {
               ),
               const widgets.Card(
                 toRoute: screens.MainTabScreen(selectedIndex: 3),
-                text: "Food",
+                text: "Nutrition",
                 url: "assets/food.png",
-                imageWidth: 105,
-                rightMargin: 50,
+                imageWidth: 95,
+                rightMargin: 35,
                 color: Colors.white,
               ),
               const SizedBox(

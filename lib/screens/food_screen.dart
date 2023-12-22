@@ -70,10 +70,10 @@ class _FoodScreenState extends State<FoodScreen> {
     return SingleChildScrollView(
       child: Column(children: [
         const widgets.HeadWithImage(
-          text: "Food",
+          text: "Nutrition",
           url: "assets/food.png",
           imageWidth: 80,
-          rightMargin: 40,
+          rightMargin: 30,
           color: Colors.black,
           topPadding: 30,
           fontSize: 34,
