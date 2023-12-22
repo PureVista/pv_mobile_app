@@ -1,16 +1,3 @@
-class Ingredient {
-  String name;
-  String description;
-  bool isHarmful;
-
-  Ingredient({
-    required this.name,
-    required this.description,
-    required this.isHarmful,
-  });
-}
-
-
 class Product {
   String id;
   String name;

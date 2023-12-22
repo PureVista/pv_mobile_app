@@ -22,7 +22,9 @@ class PureVistaApp extends StatelessWidget {
         screens.MainTabScreen.route: (context) =>
             const screens.MainTabScreen(selectedIndex: 0),
         screens.ProductDetailScreen.route: (context) =>
-            const screens.ProductDetailScreen()
+            const screens.ProductDetailScreen(),
+        screens.IngredientDetailScreen.route: (context) =>
+            const screens.IngredientDetailScreen()
       },
     );
   }
