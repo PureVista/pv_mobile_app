@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:pure_vista/models/product_model.dart";
 import "../models/models.dart" as models;
 import "../widgets/widgets.dart" as widgets;
 
@@ -17,7 +18,28 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           child: Column(
-        children: [Text(product.name)],
+        children: [
+          widgets.HeadWithImage(
+            text: product.name,
+            url: "assets/food.png",
+            imageWidth: 80,
+            rightMargin: 40,
+            color: Colors.black,
+            topPadding: 30,
+            fontSize: 34,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                ...product.ingredients.map((ingredient) =>
+                    widgets.IngredientView(ingredient: ingredient)),
+              ],
+            ),
+          ),
+        ],
       )),
     );
   }
