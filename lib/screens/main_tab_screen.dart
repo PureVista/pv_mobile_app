@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "./screens.dart" as screens;
+import "../widgets/widgets.dart" as widgets;
 
 class MainTabScreen extends StatefulWidget {
   static String route = "/main_tab";
@@ -11,7 +12,7 @@ class MainTabScreen extends StatefulWidget {
 }
 
 class _MainTabScreenState extends State<MainTabScreen> {
-  final List<Widget> _screens = [
+  final List<Widget> _screens = const [
     screens.HomeScreen(),
     screens.CosmeticScreen(),
     screens.PhotoScreen(),
@@ -30,11 +31,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: TextFormField(
-          decoration: const InputDecoration(
-              hintText: "Search Product",
-              prefixIcon: Icon(Icons.search_outlined)),
-        ),
+        title: widgets.SearchBar(),
       ),
       body: _screens[selectedIndex],
       bottomNavigationBar: bottomNavBar(),
@@ -45,7 +42,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
-      currentIndex: selectedIndex ,
+      currentIndex: selectedIndex,
       onTap: (int value) {
         setState(() {
           selectedIndex = value;
@@ -60,8 +57,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
       unselectedLabelStyle:
           const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
       items: const [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
         BottomNavigationBarItem(
             icon: Icon(Icons.shopping_basket_outlined), label: "Cosmetic"),
         BottomNavigationBarItem(

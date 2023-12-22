@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import "dart:convert" as convert;
 import "package:http/http.dart" as http;
 import "../widgets/widgets.dart" as widgets;
-import "../screens/screens.dart" as screens;
 import "../models/models.dart" as models;
 
 class FoodScreen extends StatefulWidget {
-  FoodScreen({super.key});
+  const FoodScreen({super.key});
 
   @override
   State<FoodScreen> createState() => _FoodScreenState();
@@ -14,7 +13,6 @@ class FoodScreen extends StatefulWidget {
 
 class _FoodScreenState extends State<FoodScreen> {
   List<models.Product> _products = [];
-  models.Info? _info;
   String _errorMessage = "";
   bool _fetching = false;
 

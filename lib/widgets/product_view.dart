@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import "widgets.dart" as widgets;
 import "../models/models.dart" as models;
 
 class ProductView extends StatelessWidget {
-  models.Product product;
-
-  ProductView({super.key, required this.product});
+  final models.Product product;
+  const ProductView({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +13,7 @@ class ProductView extends StatelessWidget {
         tileColor: product.isHarmful ? Colors.redAccent : Colors.green,
         onTap: () {
           Navigator.of(context)
-              .pushNamed("/episode_detail", arguments: product);
+              .pushNamed("/product_detail", arguments: product);
         },
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

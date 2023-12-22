@@ -23,6 +23,7 @@ class Card extends StatelessWidget {
     return Center(
       child: InkWell(
         onTap: () {
+          Navigator.pop(context);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => toRoute));
         },

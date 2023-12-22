@@ -1,2 +1,2 @@
 export "./product_model.dart";
-export "./info.dart";
+export "./ingredient_model.dart";
