@@ -33,6 +33,14 @@ class ProductDetailScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 22.0, vertical: 8),
+                  child: Text(
+                    product.description,
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                ),
                 ...product.ingredients.map((ingredient) =>
                     widgets.IngredientView(ingredient: ingredient)),
               ],

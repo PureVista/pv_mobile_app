@@ -22,7 +22,8 @@ class IngredientDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -48,11 +49,7 @@ class IngredientDetailScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         ingredient["description"],
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: ingredient["isHarmful"]
-                                ? Colors.white
-                                : Colors.black),
+                        style: const TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ]),

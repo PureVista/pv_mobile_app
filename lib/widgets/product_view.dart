@@ -9,7 +9,7 @@ class ProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       ListTile(
-        textColor: Colors.black,
+        textColor: Colors.white,
         tileColor: product.isHarmful ? Colors.redAccent : Colors.green,
         onTap: () {
           Navigator.of(context)
@@ -27,7 +27,11 @@ class ProductView extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.w400))
           ],
         ),
-        leading: CircleAvatar(child: Text(product.ingredients.length.toString())),
+        leading: CircleAvatar(
+            child: Text(
+          "%${(100 - product.harmfulnessPercentage).toString()}",
+          style: const TextStyle(fontSize: 12),
+        )),
         subtitle: Text(
           "${product.description.substring(0, 80)}...",
           style: const TextStyle(color: Colors.white),

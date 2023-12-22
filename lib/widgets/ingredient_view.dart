@@ -8,7 +8,7 @@ class IngredientView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       ListTile(
-        textColor: Colors.black,
+        textColor: Colors.white,
         tileColor: ingredient["isHarmful"] ? Colors.redAccent : Colors.green,
         onTap: () {
           Navigator.of(context)
