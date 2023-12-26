@@ -33,7 +33,7 @@ class ProductView extends StatelessWidget {
           style: const TextStyle(fontSize: 12),
         )),
         subtitle: Text(
-          "${product.description.substring(0, 80)}...",
+          "${product.description.substring(0, 120)}...",
           style: const TextStyle(color: Colors.white),
         ),
       ),
