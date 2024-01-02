@@ -13,7 +13,7 @@ class ProductDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: widgets.SearchBar(),
+        title: const Text("Product Details"),
       ),
       body: SingleChildScrollView(
           child: Column(

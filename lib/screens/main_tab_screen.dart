@@ -1,4 +1,8 @@
+import "dart:async";
 import 'package:flutter/material.dart';
+import "dart:convert" as convert;
+import "package:http/http.dart" as http;
+import "../models/models.dart" as models;
 import "./screens.dart" as screens;
 import "../widgets/widgets.dart" as widgets;
 
@@ -20,6 +24,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
     screens.RecommendedScreen(),
   ];
   late int selectedIndex;
+  final _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -27,11 +32,63 @@ class _MainTabScreenState extends State<MainTabScreen> {
     selectedIndex = widget.selectedIndex;
   }
 
+  List<models.Product> _products = [];
+  bool _fetching = false;
+
+  Future<List<models.Product>> getProducts() async {
+    var uri = Uri.http("10.0.2.2:3000", "/api/products");
+    var response = await http.get(uri);
+
+    if (response.statusCode != 200) {
+      throw "Service not working!";
+    }
+    var jsonResponse = convert.jsonDecode(response.body);
+
+    List<models.Product> responseProducts = [];
+
+    for (var result in jsonResponse["result"] as List) {
+      models.Product resultProduct = models.Product(
+          id: result["_id"],
+          name: result["name"],
+          brand: result["brand"],
+          description: result["description"],
+          isHarmful: result["isHarmful"],
+          ingredients: result["ingredients"],
+          harmfulnessPercentage: result["harmfulnessPercentage"],
+          productType: result["productType"]);
+      responseProducts.add(resultProduct);
+    }
+
+    return responseProducts;
+  }
+
+  void _onSearchSubmit(String searchTerm) async {
+    if (searchTerm.isEmpty) {
+      setState(() {
+        _fetching = false;
+        _products = [];
+      });
+    }
+    setState(() {
+      _fetching = true;
+    });
+    List<models.Product> products = await getProducts();
+    setState(() {
+      _fetching = false;
+      List<models.Product> filteredProducts = products
+          .where((product) =>
+              product.name.toLowerCase().contains(searchTerm.toLowerCase()))
+          .toList();
+      _products = filteredProducts;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: widgets.SearchBar(),
+        title: widgets.SearchBar(
+            controller: _searchController, onSubmitted: _onSearchSubmit),
       ),
       body: _screens[selectedIndex],
       bottomNavigationBar: bottomNavBar(),

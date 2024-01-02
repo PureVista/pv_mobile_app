@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import "../widgets/widgets.dart" as widgets;
 
 class IngredientDetailScreen extends StatelessWidget {
   static String route = "/ingredient_detail";
@@ -12,7 +11,7 @@ class IngredientDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: widgets.SearchBar(),
+        title: const Text("Ingredient"),
       ),
       body: SingleChildScrollView(
         child: Padding(
