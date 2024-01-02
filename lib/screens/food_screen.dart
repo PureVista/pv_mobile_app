@@ -85,8 +85,8 @@ class _FoodScreenState extends State<FoodScreen> {
           child: Column(
             children: [
               if (!_fetching)
-                ..._products
-                    .map((product) => widgets.ProductView(product: product)),
+                ..._products.map((product) =>
+                    widgets.ProductView(product: product, category: "F")),
               if (_errorMessage.isNotEmpty)
                 Container(
                   margin: const EdgeInsets.only(top: 30),

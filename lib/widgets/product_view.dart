@@ -3,7 +3,8 @@ import "../models/models.dart" as models;
 
 class ProductView extends StatelessWidget {
   final models.Product product;
-  const ProductView({super.key, required this.product});
+  final String category;
+  const ProductView({super.key, required this.product, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class ProductView extends StatelessWidget {
         textColor: Colors.white,
         tileColor: product.isHarmful ? Colors.redAccent : Colors.green,
         onTap: () {
+          product.category = category;
           Navigator.of(context)
               .pushNamed("/product_detail", arguments: product);
         },

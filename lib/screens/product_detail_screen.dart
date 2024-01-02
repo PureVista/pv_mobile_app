@@ -20,7 +20,9 @@ class ProductDetailScreen extends StatelessWidget {
         children: [
           widgets.HeadWithImage(
             text: product.name,
-            url: "assets/food.png",
+            url: product.category == "F"
+                ? "assets/food.png"
+                : "assets/makeup.png",
             imageWidth: 80,
             rightMargin: 40,
             color: Colors.black,

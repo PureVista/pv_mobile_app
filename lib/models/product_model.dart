@@ -8,6 +8,7 @@ class Product {
   String productType;
   List<dynamic> ingredients;
   List<String>? barcodes;
+  String? category;
 
   Product(
       {required this.id,
